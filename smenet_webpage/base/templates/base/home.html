@@ -1,0 +1,301 @@
+
+{% extends 'main.html'%}
+{% block content%}
+{% comment %} <h1>home template</h1> {% endcomment %}
+{% comment %} <div>
+<div>
+{%for room in rooms %}
+<h5>{{room.id}} = <a href="/profile/{{room.id}}">{{room.name}}}</a>
+</h5>
+{% endfor %}
+</div>
+</div> {% endcomment %}
+
+
+<style>
+:root{
+    --primary-color:blue;
+}
+
+*{
+    box-sizing:border-box;
+    margin: 0;
+    padding: 0;
+
+
+}
+
+
+
+body {
+        background-color: #d6ebeb;
+    background-image: 
+        radial-gradient(at 47% 33%, hsl(234.71, 51%, 74%) 0, transparent 59%); 
+        radial-gradient(at 82% 65%, hsl(180.00, 99%, 88%) 0, transparent 55%);
+     
+}
+
+.div1{
+        backdrop-filter: blur(4px) saturate(164%);
+    -webkit-backdrop-filter: blur(4px) saturate(164%);
+    background-color: rgba(255, 255, 255, 0.37);
+    border-radius: 12px;
+    border: 1px solid rgba(209, 213, 219, 0.3);
+    margin: 10em;
+    
+}
+
+{% comment %} body{
+    font-family:'Arial',san-serif;
+    -webkit-font-smoothing:antialiased;
+    background:#000;
+    color:#fff;
+
+} {% endcomment %}
+
+
+
+ul{
+    list-style:none;
+
+}
+
+h1,h2,h3,h4{
+    color:#fff;
+
+}
+a,.t{
+    color:#fff;
+    text-decoration:none;
+}
+
+p{
+    margin:0.5rem 0;
+    color:#fff;
+    
+}
+img{
+    width:100%;
+}
+
+.showcase{
+    width:100%;
+    height:93vh;
+
+    position: relative;
+    {% comment %} background-image: url("https://images.unsplash.com/photo-1541746972996-4e0b0f43e02a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80"); {% endcomment %}
+    background-repeat: no-repeat;
+    background-position: center center;
+
+    {% comment %} background-size: cover; {% endcomment %}
+}
+
+.showcase-top{
+    position: relative;
+    height:90px;
+
+
+}
+
+
+.showcase-top img{
+    width:170px;
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+
+}
+.showcase-top a{
+    position: absolute;
+    top:50%;
+    right:0;
+    transform:translate(-50%,-50%);
+    color:#fff;
+}
+.showcase-content{
+    position:relative;
+    margin:auto;
+    display-directions:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    margin-top:9rem;
+}
+
+.showcase-content h1{
+    font-weight:700;
+    font-size:5.2rem;
+    line-height:1.1;
+    margin: 0 0 2rem;
+    
+
+}
+.showcase-content p{
+    text-transform:uppercase;
+    font-weight:1000;
+    font-size:1,9rem;
+    line-height:1.25;
+    margin: 0 0 2rem;
+    color:#fff;
+    
+    
+    
+}
+.btn{
+    display:inline-block;
+    background:var(--primary-color);
+    color:#fff;
+    padding:0.4rem 1.3rem;
+    font-size:1rem;
+    text-align:center;
+    border:none;
+    cursor:pointer;
+    margin: right 0.5rem;
+    outline:none;
+    box-shadow:0 1px 0 rgba(0,0,0, 0.45);
+    border-radius:2px;
+}
+
+
+.btn-hover{
+    opacity:0.9;
+}
+
+
+.btn-rounded{
+    border-radius:5px;
+
+}
+
+.btn-xl{
+    font-size:2rem;
+    padding:1.5rem 2.1rem;
+    text-transform:uppercase;
+    
+    border-radius:5rem;
+  
+}
+.btn-xl{
+    font-size:1rem;
+    padding:0.8rem 1.3rem;
+    text-transform:uppercase;
+}
+.div2 {  
+position: relative;
+width: 500px;  
+height: auto;  
+text-align: center;  
+padding: 15px;
+transform:translate(-20%,-50%);
+
+ 
+}  
+#image1{  
+object-fit: cover;
+text-align: center;   
+}  
+
+
+
+.div3{  
+position: relative;
+width: 500px;  
+height: 500px;  
+text-align: center;  
+padding: 15px;
+transform:translate(230%,-1%);
+
+ 
+}  
+#image2{  
+object-fit: cover;
+   
+}  
+
+.div-text{
+    position: relative;
+    text-align:right;
+    width: 800px;  
+    height: auto;
+    transform:translate(70%,-1%);
+    
+}
+
+.text-divv{
+    color:#696969;
+    text-align:left;
+
+    
+}
+
+#h1tag{
+    color:blue;
+    text-align:left;
+}
+
+.div-text1{
+    position: relative;
+    text-align:right;
+    width: 800px;  
+    height: auto;
+    transform:translate(10%,-1%);
+    
+}
+
+
+.text-divv1{
+    color:#696969;
+    text-align:left;
+
+    
+}
+
+#h1tag1{
+    color:blue;
+    text-align:left;
+}
+
+</style>
+
+<div class="div1">
+
+<header class="showcase">
+
+<div class="showcase-top">
+<img src="https://facebookbrand.com/wp-content/uploads/2020/10/Logo_Messenger_NewBlurple-399x399-1.png?w=399&h=399" alt="smenet-logo">
+<a href="#" class="btn btn-rounded">Sign in</a>
+</div>
+<div class="showcase-content">
+<h1>SMENET</h1>
+
+
+<a href="#" class="btn btn-xl">
+<div class="t"> CONNECT    |      HIRE    |      LAY-OFF </div><i class="fas fa-chevron-right btn-icon"></i>
+</a>
+</div>
+
+</header>
+
+<div class="div-text">
+
+<h1 id="h1tag"><strong>HIRE TALENTS AROUND THE GLOBE</strong></h1>
+<P class="text-divv"><strong>Hiring is the most important people function you have, and most of us aren’t as good at it as we think. Refocusing your resources on hiring better will have a higher return than almost any training program you can develop.Your human talent is your most important talent. </strong> </P>
+</div>
+<div class="div2">
+<p id="image1"> <img src="https://image.freepik.com/free-vector/business-man-working-hard-stock-financial-trade-market-diagram-vector-illustration-flat-design_1150-39773.jpg" alt=""></p>
+</div>
+
+<div class="div-text1">
+<h1 id="h1tag1"><strong>SEEMLESS AND HASSLEFREE</strong></h1>
+<P class="text-divv1"><strong>Hiring is the most important people function you have, and most of us aren’t as good at it as we think. Refocusing your resources on hiring better will have a higher return than almost any training program you can develop.Your human talent is your most important talent. </strong> </P>
+</div>
+<div class="div3">
+<p id="image2"> <img src="https://image.freepik.com/free-vector/big-isolated-employee-working-office-workplace-flat-illustration_1150-41780.jpg" alt=""></p>
+</div>
+
+</div>
+
+
+
+{%endblock%}

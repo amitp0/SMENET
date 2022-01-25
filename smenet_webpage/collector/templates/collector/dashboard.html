@@ -1,0 +1,92 @@
+{%extends 'main.html'%}
+
+    {% block content %}
+{% comment %}  
+ <div class="container">
+<div class="row">
+{% for comp in Companies_ob%}
+<div class="col-md-3">
+<div class="card">
+
+<img src="https://picsum.photos/200" alt="" class="card-img-top">
+<div class="card-body">
+<div class="card-title">
+{{comp.Comapany_Name}}
+</div>
+<div class="card-text">
+
+{{comp.Comapany_location}}
+
+</div>
+</div>
+</div>
+</div>
+{%endfor%}
+</div>
+</div>    {% endcomment %}
+<style>
+.card {
+ 
+background: rgba(255,255,255,0.35);
+
+
+ 
+   
+  
+}
+
+body{
+  background-color: #d6ebeb;
+  background-image: 
+  radial-gradient(at 47% 33%, hsl(234.71, 51%, 74%) 0, transparent 59%); 
+  /* dial-gradient (at 82% 65%, hsl(180.00, 99%, 88%) 0, transparent 55%); */
+}
+
+
+
+</style>
+ <div class="row"> 
+            {% for comp in Companies_ob%}
+            <div class="col-md-3">
+                <div class="card">
+                    <img src="https://cdn.logo.com/hotlink-ok/logo-social-sq.png" alt="logo here" style="height:150px; width:150px;  margin-left: auto; text-align:center;; margin-right: auto; ">
+                    <div class="card-body">
+                        <h3 id="nm{{ comp.Company_Name }}" class="card-title_">{{comp.Company_Name }}</h3>
+                        <h5 class="card-title">{{ comp.Company_location }}</h5>
+                        <!-- <p class="card-text"> {{ product.description }}</p> -->
+                        {% comment %} <textarea name="" id="" cols="35" rows="2">{{ comp.Company_domain }}</textarea> {% endcomment %}
+                        {% comment %} <h5 style="color:green;" id="price{{ product.id }}">{{ product.price }}</h5> {% endcomment %}
+                        {% comment %} <h5>Discount <span style="color:red;" >{{ product.discount_price }}$</span></h5> {% endcomment %}
+
+                        <!-- view and add to card -->
+                        <div class="row" >
+                            <div class="col-md-3">
+                                <a href="{{comp.id}}" class="btn btn-warning" style="background-color:blue;">View</a>
+                            </div>
+                            <div class="col-md-9">
+                                <button id="{{ comp.id }}" class="btn atc btn-warning">Like</button>
+                            </div>
+                        </div>  
+                    </div>
+                    
+                </div>
+                <br>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="row">
+            <div class="pagination">
+                <span class="step-links">
+                    {% if Companies.has_previous %}
+                        <a href="?page=1">&laquo; first</a>
+                        <a  href="?page={{ Companies.previous_page_number }}">previous</a>
+                    {% endif %}
+            
+                    <span cl
+
+{% endblock %}
+
+
+
+  
+
