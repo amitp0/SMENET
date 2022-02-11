@@ -1,0 +1,128 @@
+<html lang=en>
+
+<head>
+  <meta charset=utf-8>
+  <link href=/favicon.ico rel=icon>
+  <meta content="width=device-width,initial-scale=1" name=viewport>
+  <meta content=#000000 name=theme-color>
+  {% load static %}
+  <link href="{% static 'tailwind.css' %}" rel="stylesheet">
+  <link href=/logo192.png rel=apple-touch-icon>
+  <title>SMENET | An Online platform for hiring</title>
+  <style>
+    @import url(https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=fallback);
+  </style>
+</head>
+
+
+<body class="bg-white antialiased font-inter text-gray-900 tracking-tight">
+  {% block content %}
+  {% load tailwind_filters %}
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id=root>
+    <div class="flex flex-col min-h-screen overflow-hidden">
+      <header class="w-full bg-white fixed blur duration-300 ease-in-out md:bg-opacity-95 transition z-30">
+        <div class="mx-auto max-w-6xl sm:px-6 px-5">
+          <div class="flex h-16 items-center justify-between md:h-20">
+            <div class="flex-shrink-0 mr-4"><a href="{% url "index" %}" class=block>
+                <h1><b>SMENET</b></h1>
+              </a></div>
+            <nav class="flex flex-grow">
+              <ul class="flex flex-wrap flex-grow items-center justify-end">
+                <li><a href="{% url "signin" %}" class="text-white bg-blue-600 btn-sm hover:bg-blue-800 ml-3"><span>Log
+                      Out</span><svg class="text-white -mr-1 fill-current flex-shrink-0 h-3 ml-2 w-3"
+                      viewBox="0 0 12 12" xmlns=http://www.w3.org/2000/svg>
+                      <path d="M11.707 5.293L7 .586 5.586 2l3 3H0v2h8.586l-3 3L7 11.414l4.707-4.707a1 1 0 000-1.414z"
+                        fill-rule=nonzero></path>
+                    </svg></a>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </header>
+      <main class=flex-grow>
+        <section class="aos-animate aos-init bg-gradient-to-b from-gray-100 to-white" data-aos=zoom-x-in>
+          <div class="mx-auto max-w-6xl sm:px-6 px-4">
+            <div class="md:pb-20 pb-12 md:pt-40 pt-32">
+              <div class="md:pb-8 pb-4 max-w-3xlmx-auto text-center">
+                <h2 class=h2>Recommendations for {{ request.user.username }}</h2>
+              </div>
+              <hr>
+              <div>
+                <div class="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-4 pt-4 px-4">
+
+                  {% for i in pred %}
+                  <div class="border text-center border-sky-800 hover:bg-gray-200 p-6 m-4 rounded font-bold">
+                    {{i}}
+                    <div class="inset-x-0 bottom-0 pt-8">
+                     
+
+                      <button class="content-end"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
+                      </svg></button>
+                    </div>
+
+                  </div>
+                  {%endfor%}
+                </div>
+              </div>
+
+
+              <hr><br><br><br>
+              <div class="md:pb-8 pb-4 max-w-3xlmx-auto text-center">
+                <h2 class=h2>Recently added</h2>
+              </div>
+              <hr>
+              <div>
+                <div class="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-4 pt-4 px-4">
+
+                  {% for i in new %}
+                  <div class="border text-center border-sky-800 hover:bg-gray-200 p-6 m-4 rounded font-bold">
+                    {{i}}
+                    <div class="inset-x-0 bottom-0 pt-8">
+                     
+
+                      <button class="content-end"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
+                      </svg></button>
+                    </div>
+
+                  </div>
+                  {%endfor%}
+                </div>
+              </div>
+
+
+              <hr><br><br><br>
+              <div class="md:pb-8 pb-4 max-w-3xlmx-auto text-center">
+                <h2 class=h2>With highest ratings</h2>
+              </div>
+              <hr>
+              <div>
+                <div class="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-4 pt-4 px-4">
+
+                  {% for i in top %}
+                  <div class="border text-center border-sky-800 hover:bg-gray-200 p-6 m-4 rounded font-bold">
+                    {{i}}
+                    <div class="inset-x-0 bottom-0 pt-8">
+                     
+
+                      <button class="content-end"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
+                      </svg></button>
+                    </div>
+
+                  </div>
+                  {%endfor%}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+  {% endblock %}
+</body>
+
+</html>
