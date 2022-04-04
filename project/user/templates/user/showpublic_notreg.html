@@ -47,35 +47,21 @@
               <div class="md:pb-20 pb-12 md:pt-40 pt-32">
                 <div class="flex flex-row">
                   <div class="md:w-5/6 md:pb-8 pb-4 max-w-3xlmx-auto text-left">
-                    <h2 class=h2>{{ request.user.username }}</h2>
+                    <h2 class=h2>{{ comp_name }}</h2>
+                    <br>
                 </div>
-              <div><center><a href="/empAdd/" class="btn btn-sm absolute hover:bg-gray-200"> + Add New Employee</a></center></div>
               </div>
                 
                 <table class="table-auto border-collapse container">
                     <thead>
                       <tr class="p-4">
-                        <th class="border border-slate-600 p-4">Employee ID</th>
-                        <th class="border border-slate-600">Employee Name</th>
-                        <th class="border border-slate-600">Domain</th>
-                        <th class="border border-slate-600">Can relocate</th>
-                        <th class="border border-slate-600">Options</th>
                       </tr>
                     </thead>
                     <tbody class="p-4">
-                        {% for employee in employees %}  
-                        <tr class="text-center">  
-                            <td class="border border-slate-600 p-4">{{ employee.emp_id }}</td>  
-                            <td class="border border-slate-600 p-4">{{ employee.emp_name }}</td>  
-                            <td class="border border-slate-600 p-4">{{ employee.domain }}</td>  
-                            <td class="border border-slate-600 p-4">{{ employee.ready_to_relocate}}</td>  
-                            <td class="border border-slate-600 p-4">  
-                                <!-- <a href="/edit/{{ employee.emp_id }}"><span class="glyphicon glyphicon-pencil" >Edit</span></a> |  -->
-                                <a href="/delete/{{ employee.emp_id }}">Delete</a>  
-                            </td>  
-                        </tr>  
-                    {% endfor %}  
                     </tbody>
+                        <tr class="text-center">
+                            <td class="border border-slate-600 p-4">Employee list is empty</span></td>
+                        </tr>
                   </table>
                   <br><br><br><br>
               </div>

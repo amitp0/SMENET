@@ -9,6 +9,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from .forms import EmployeeForm, UserRegisterForm
 from .models import Company, Employee
+from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 
 import pandas as pd
@@ -184,6 +185,8 @@ def user_page(request,username):
 
 @login_required
 def addEmployee(request):
+    sample_instance = Company.objects.get(username=request.user.username)
+    value_of_name = sample_instance.comp_id
     if request.method=="POST":
         form=EmployeeForm(request.POST)
         if form.is_valid():
@@ -194,7 +197,7 @@ def addEmployee(request):
                 pass
     else:
             form= EmployeeForm()
-    return render(request,'user/s.html',{'form':form})
+    return render(request,'user/s.html',{'form':form,'comp_id':value_of_name})
 
 @login_required
 def show(request):
@@ -224,3 +227,22 @@ def delete(request, id):
     employee = Employee.objects.get(emp_id=id)  
     employee.delete()  
     return redirect("/show")  
+
+@login_required
+def public_view(request, username): 
+    print(username)
+    try:
+        sample_instance = Company.objects.get(username=username)
+        value_of_name = sample_instance.comp_id
+        comp_email=sample_instance.email
+        comp_domain=sample_instance.company_domain
+        comp_location=sample_instance.company_location
+        comp_phone=sample_instance.phone_no
+        employees = Employee.objects.filter(company_id=value_of_name)
+        return render(request,"user/showpublic.html",{'employees':employees,'comp_name':username,'comp_email':comp_email,'comp_domain':comp_domain,'comp_phone':comp_phone,'comp_location':comp_location})  
+
+    except:
+        # value_of_name = sample_instance.comp_id
+        # employees = Employee.objects.filter(company_id=value_of_name)
+        return render(request,"user/showpublic_notreg.html",{'comp_name':username,})  
+    

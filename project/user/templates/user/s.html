@@ -50,6 +50,7 @@
                         <div class="md:pb-20 pb-12 md:pt-40 pt-32">
                             <div class="md:pb-8 pb-4 max-w-3xlmx-auto text-left">
                                 <h2 class="h2 text-center">{{ request.user.username }}</h2>
+                                <h2 class="h5 text-center">Company Id   :   {{ comp_id }}</h2>
                                 <form method="POST" class="post-form" action="/empAdd/">  
                                     {% csrf_token %}
                                     {{ form|crispy }}
