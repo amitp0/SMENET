@@ -26,8 +26,8 @@ SECRET_KEY = 'django-insecure-7tav_2ox3dsor5ny0t-h-f=a-x=(sv(ud#@g1@6l9atptxd)y_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ["*"]
+CSRF_TRUSTED_ORIGINS = ['https://*.ngrok.io']
 # Application definition
 
 INSTALLED_APPS = [
@@ -130,3 +130,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
 
 CRISPY_TEMPLATE_PACK = "tailwind"
+
+EMAIL_USE_TLS = True  
+EMAIL_HOST = 'smtp.gmail.com'  
+EMAIL_HOST_USER = 'amp42628@gmail.com'  
+EMAIL_HOST_PASSWORD = 'amp@4+2=6'  
+EMAIL_PORT = 587

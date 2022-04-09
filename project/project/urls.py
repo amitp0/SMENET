@@ -22,6 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('user.urls')),
     path('signin/', user_view.Login, name ='signin'),
+    path('logout/', user_view.Logout, name ='logout'),
     path('signup/', user_view.register, name ='signup'),
     path('dashboard/', user_view.dashboard, name ='dashboard'),
     path('emp/', user_view.employee_dashboard, name ='e_dashboard'),
@@ -32,5 +33,6 @@ urlpatterns = [
     path("edit/<int:id>",user_view.edit,name="edit"),
     path("update/<int:id>",user_view.update,name="update"),
     path("delete/<int:id>",user_view.delete,name="delete"),
+    
 
 ]
