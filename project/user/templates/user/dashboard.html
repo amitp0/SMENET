@@ -1,0 +1,185 @@
+<html lang=en>
+
+<head>
+  <meta charset=utf-8>
+  <link href=/favicon.ico rel=icon>
+  <meta content="width=device-width,initial-scale=1" name=viewport>
+  <meta content=#000000 name=theme-color>
+  {% load static %}
+  <link href="{% static 'tailwind.css' %}" rel="stylesheet">
+  <link href=/logo192.png rel=apple-touch-icon>
+  <title>SMENET | An Online platform for hiring</title>
+  <style>
+    @import url(https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=fallback);
+  </style>
+</head>
+
+
+<body class="bg-white antialiased font-inter text-gray-900 tracking-tight">
+  {% block content %}
+  {% load tailwind_filters %}
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id=root>
+    <div class="flex flex-col min-h-screen overflow-hidden">
+      <header class="w-full bg-white fixed blur duration-300 ease-in-out md:bg-opacity-95 transition z-30">
+        <div class="mx-auto max-w-6xl sm:px-6 px-5">
+          <div class="flex h-16 items-center justify-between md:h-20">
+            <div class="flex-shrink-0 mr-4"><a href="{% url "index" %}" class=block>
+                <h1><b>SMENET</b></h1>
+              </a></div>
+            <nav class="flex flex-grow">
+              <ul class="flex flex-wrap flex-grow items-center justify-end">
+                <li><a href="{% url "show" %}" class="btn-sm ml-3"><span>Profile</span></a></li>
+                
+
+                <li><a href="{% url "signin" %}" class="text-white bg-blue-600 btn-sm hover:bg-blue-800 ml-3"><span>Log
+                      Out</span><svg class="text-white -mr-1 fill-current flex-shrink-0 h-3 ml-2 w-3"
+                      viewBox="0 0 12 12" xmlns=http://www.w3.org/2000/svg>
+                      <path d="M11.707 5.293L7 .586 5.586 2l3 3H0v2h8.586l-3 3L7 11.414l4.707-4.707a1 1 0 000-1.414z"
+                        fill-rule=nonzero></path>
+                    </svg></a></li>
+
+                    
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </header>
+      <main class=flex-grow>
+        <section class="aos-animate aos-init bg-gradient-to-b from-gray-100 to-white" data-aos=zoom-x-in>
+          <div class="mx-auto max-w-6xl sm:px-6 px-4">
+            <div class="md:pb-20 pb-12 md:pt-40 pt-32">
+              <div class="md:pb-8 pb-4 max-w-3xlmx-auto text-center">
+                <h2 class=h2>Recommendations for {{ request.user.username }}</h2>
+              </div>
+              <hr>
+              <div>
+                <div class="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-4 pt-4 px-4">
+                  {% for i,j,k in pred %}
+                  <div class="border text-center border-sky-800 hover:bg-gray-200 p-6 m-4 rounded font-bold">
+                      <div class="text-gray-900">{{i}}</div>
+                      <div class="font-thin text-gray-600 text-sm">{{j}}</div>
+                      <div class="w-full pt-4 flex justify-center">
+                          {{k}}<div class="flex justify-center">
+                              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                  <path
+                                      d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                                  />
+                              </svg>
+                             
+                          </div>
+                      </div>
+                      <div class="flex pt-4">
+                          <div class="inset-x-0 bottom-0 pt-4 px-4 w-1/2">
+                            <button class="border border-gray-200 rounded p-2 hover:bg-gray-400">
+                              <a href="/user/{{ i }}">View</a>  
+                          </button>
+                          </div>
+                          <div class="inset-x-0 bottom-0 pt-4 px-4 w-1/2">
+                              <button  class="border border-gray-200 rounded p-2 hover:bg-gray-400">
+                                  Like
+                              </button>
+                          </div>
+                      </div>
+                  </div>
+                  
+                  {%endfor%}
+              </div>
+              </div>
+
+
+              <hr><br><br><br>
+              <div class="md:pb-8 pb-4 max-w-3xlmx-auto text-center">
+                <h2 class=h2>Recently added</h2>
+              </div>
+              <hr>
+              <div>
+                <div class="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-4 pt-4 px-4">
+                  {% for i,j,k in new %}
+                  <div class="border text-center border-sky-800 hover:bg-gray-200 p-6 m-4 rounded font-bold">
+                      <div class="text-gray-900">{{i}}</div>
+                      <div class="font-thin text-gray-600 text-sm">{{j}}</div>
+                      <div class="w-full pt-4 flex justify-center">
+                          <div class="flex justify-center">
+                              {{k}}<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                  <path
+                                      d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                                  />
+                              </svg>
+                             
+                          </div>
+                      </div>
+                      <div class="flex pt-4">
+                          <div class="inset-x-0 bottom-0 pt-4 px-4 w-1/2">
+                            <button class="border border-gray-200 rounded p-2 hover:bg-gray-400">
+                              <a href="/user/{{ i }}">View</a>  
+                          </button>
+                          </div>
+                          <div class="inset-x-0 bottom-0 pt-4 px-4 w-1/2">
+                              <button  class="border border-gray-200 rounded p-2 hover:bg-gray-400">
+                                  Like
+                              </button>
+                          </div>
+                      </div>
+                  </div>
+                  
+                  {%endfor%}
+              </div>
+              </div>
+
+
+              <hr><br><br><br>
+              <div class="md:pb-8 pb-4 max-w-3xlmx-auto text-center">
+                <h2 class=h2>With highest ratings</h2>
+              </div>
+              <hr>
+              <div>
+                <div class="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-4 pt-4 px-4">
+                  {% for i,j,k in top %}
+                  <div class="border text-center border-sky-800 hover:bg-gray-200 p-6 m-4 rounded font-bold">
+                      <div class="text-gray-900">{{i}}</div>
+                      <div class="font-thin text-gray-600 text-sm">{{j}}</div>
+                      <div class="w-full pt-4 flex justify-center">
+                          <div class="flex justify-center">
+                              {{k}}<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                  <path
+                                      d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                                  />
+                              </svg>
+                             
+                          </div>
+                      </div>
+                      <div class="flex pt-4">
+                          <div class="inset-x-0 bottom-0 pt-4 px-4 w-1/2">
+                              <button class="border border-gray-200 rounded p-2 hover:bg-gray-400">
+                                  <a href="/user/{{ i }}">View</a>  
+                              </button>
+                          </div>
+                          <div class="inset-x-0 bottom-0 pt-4 px-4 w-1/2">
+                              <button  class="border border-gray-200 rounded p-2 hover:bg-gray-400">
+                                  Like
+                              </button>
+                          </div>
+                      </div>
+                  </div>
+                  
+                  {%endfor%}
+              </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+  {% endblock %}
+
+
+  <script type="text/javaScript"> 
+    var a = "{{pred}}";
+    var b = "{{new}}";
+    var c = "{{top}}"
+ </script>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>SMENET</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		{% load static %}
+		<link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
+		<noscript><link rel="stylesheet" href="{% static 'assets/css/noscript.css' %}" /></noscript>
+	</head>
+	<body class="is-preload">
+			<div id="wrapper">
+					<header id="header">
+						<div class="inner">
+								<a href="{% url "index" %}" class="logo">
+									<span class="title">SMENET</span>
+								</a>
+
+							<!-- Nav -->
+								<nav>
+									<ul>
+										<li><a href="#menu">Menu</a></li>
+									</ul>
+								</nav>
+
+						</div>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="{% url "index" %}">Home</a></li>
+							<li><a href="{% url "signin" %}">Sign In</a></li>
+							<li><a href="{% url "signup" %}">Sign Up</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+								<h1>There's a <br>better way to work</h1>
+								<a href="{% url "signup" %}" onMouseOver="this.style.color='#00F'" onMouseOut="this.style.color='#000'"><button type="button" class="btn btn-primary " >Meet the Product</button></a>
+							
+							
+						</div>
+					</div>
+
+				
+			</div>
+
+		<!-- Scripts -->
+			<script src= "{% static 'assets/js/breakpoints.min.js' %}" ></script>
+			<script src= "{% static 'assets/js/browser.min.js' %}" ></script>
+			<script src= "{% static 'assets/js/jquery.min.js' %}" ></script>
+			<script src= "{% static 'assets/js/main.js' %}" ></script>
+			<script src= "{% static 'assets/js/util.js' %}" ></script>
+
+	</body>
+</html>

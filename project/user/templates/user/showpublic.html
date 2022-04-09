@@ -1,0 +1,96 @@
+<!DOCTYPE html>  
+<html lang=en>
+
+<head>
+  <meta charset=utf-8>
+  <link href=/favicon.ico rel=icon>
+  <meta content="width=device-width,initial-scale=1" name=viewport>
+  <meta content=#000000 name=theme-color>
+  {% load static %}
+  <link href="{% static 'tailwind.css' %}" rel="stylesheet">
+  <link href=/logo192.png rel=apple-touch-icon>
+  <title>SMENET | An Online platform for hiring</title>
+  <style>
+    @import url(https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=fallback);
+  </style>
+</head>
+
+
+<body class="bg-white antialiased font-inter text-gray-900 tracking-tight">
+  {% block content %}
+  {% load tailwind_filters %}
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id=root>
+    <div class="flex flex-col min-h-screen overflow-hidden">
+      <header class="w-full bg-white fixed blur duration-300 ease-in-out md:bg-opacity-95 transition z-30">
+        <div class="mx-auto max-w-6xl sm:px-6 px-5">
+          <div class="flex h-16 items-center justify-between md:h-20">
+            <div class="flex-shrink-0 mr-4"><a href="{% url "index" %}" class=block>
+                <h1><b>SMENET</b></h1>
+              </a></div>
+            <nav class="flex flex-grow">
+              <ul class="flex flex-wrap flex-grow items-center justify-end">
+                <li><a href="{% url "signin" %}" class="text-white bg-blue-600 btn-sm hover:bg-blue-800 ml-3"><span>Log
+                      Out</span><svg class="text-white -mr-1 fill-current flex-shrink-0 h-3 ml-2 w-3"
+                      viewBox="0 0 12 12" xmlns=http://www.w3.org/2000/svg>
+                      <path d="M11.707 5.293L7 .586 5.586 2l3 3H0v2h8.586l-3 3L7 11.414l4.707-4.707a1 1 0 000-1.414z"
+                        fill-rule=nonzero></path>
+                    </svg></a>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </header>
+      <main class=flex-grow>
+        <section class="aos-animate aos-init bg-gradient-to-b from-gray-100 to-white" data-aos=zoom-x-in>
+          <div class="mx-auto max-w-6xl sm:px-6 px-4">
+              <div class="md:pb-20 pb-12 md:pt-40 pt-32">
+                <div class="flex flex-row">
+                  <div class="md:w-5/6 md:pb-8 pb-4 max-w-3xlmx-auto text-left">
+                    <h2 class=h2>{{ comp_name }}</h2>
+                    <br>
+                    <h6 class=h6>Email  :    {{ comp_email }}</h6>
+                    <h6 class=h6>Contact No.  :    {{ comp_phone }}</h6>
+                    <h6 class=h6>Domain  :    {{ comp_domain }}</h6>
+                    <h6 class=h6>Location  :    {{ comp_location }}</h6>
+                </div>
+              </div>
+                
+                <table class="table-auto border-collapse container">
+                        {%if employees%}
+                    <thead>
+                      <tr class="p-4">
+                        <th class="border border-slate-600 p-4">Employee Name</th>
+                        <th class="border border-slate-600 p-4">Domain</th>
+                        <th class="border border-slate-600 p-4">Can relocate</th>
+                        <th class="border border-slate-600 p-4">Current Location</th>
+                      </tr>
+                    </thead>
+                    <tbody class="p-4">
+                        {% for employee in employees %}  
+                        <tr class="text-center">  
+                            <!-- <td class="border border-slate-600 p-4">{{ employee.emp_id }}</td>   -->
+                            <td class="border border-slate-600 p-4">{{ employee.emp_name }}</td>  
+                            <td class="border border-slate-600 p-4">{{ employee.domain }}</td>  
+                            <td class="border border-slate-600 p-4">{{ employee.ready_to_relocate}}</td>  
+                            <td class="border border-slate-600 p-4">{{ employee.current_loc}}</td>  
+                             
+                        </tr>  
+                        {% endfor %} 
+                    </tbody>
+                        {%else%}
+                        <tr class="text-center">
+                            <td class="border border-slate-600 p-4">Employee list is empty</td>
+                        </tr>
+                        {%endif%}
+                  </table>
+                  <br><br><br><br>
+              </div>
+        </div>
+        </section>
+      </main>
+    </div>
+  </div>
+  {% endblock %}
+</body>
+</html>
