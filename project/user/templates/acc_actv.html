@@ -1,7 +1,0 @@
-{% autoescape off %}  
-Greetings, {{ user.username }},  
-Kindly click below given link to activate your account, 
-http://{{ domain }}{% url 'activate' uidb64=uid token=token %} 
-Regards,
-SMENET.
-{% endautoescape %}  
